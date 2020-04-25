@@ -124,7 +124,7 @@ public class Driver {
                     ChromeOptions remoteChromeOptions = new ChromeOptions();
                     remoteChromeOptions.setCapability("platform", Platform.ANY);
                     try {
-                        driverPool.set(new RemoteWebDriver(new URL("http:192.168.1.8:4444/wd/hub"),remoteChromeOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("localIp:4444/wd/hub"),remoteChromeOptions));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
@@ -133,7 +133,7 @@ public class Driver {
                     FirefoxOptions remoteFirefoxOptions = new FirefoxOptions();
                     remoteFirefoxOptions.setCapability("platform", Platform.ANY);
                     try {
-                        driverPool.set(new RemoteWebDriver(new URL("http:192.168.1.8:4444/wd/hub"),remoteFirefoxOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("localIp:4444/wd/hub"),remoteFirefoxOptions));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }

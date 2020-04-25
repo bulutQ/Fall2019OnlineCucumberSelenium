@@ -1,8 +1,5 @@
 package com.vytrack.utilities;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
 import java.io.FileInputStream;
 import java.util.Properties;
 

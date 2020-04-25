@@ -20,14 +20,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * elements from that menu
  */
 public abstract class AbstractPageBase {
-    protected WebDriver driver = Driver.getDriver();
+    protected WebDriver driver = Driver.getDriver("remote_chrome");
     protected WebDriverWait wait = new WebDriverWait(driver, 25);
 
     @FindBy(css = "#user-menu > a")
     protected WebElement currentUser;
+    @FindBy(css = "[class='btn-group pull-right'] > button")
+    protected WebElement saveAndClose;
 
     public AbstractPageBase() {
         PageFactory.initElements(driver, this);
+    }
+
+    public void clickOnSaveAndClose() {
+        BrowserUtilities.wait(3);
+        wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
     }
 
 
@@ -61,5 +68,10 @@ public abstract class AbstractPageBase {
 
         //increase this wait rime if still failing
         BrowserUtilities.wait(4);
+        //waitForLoaderMask();
+    }
+
+    public void waitForLoaderMask(){
+         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class*='loader-mask']")));
     }
 }
